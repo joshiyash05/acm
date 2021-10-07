@@ -1,0 +1,94 @@
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yj Registration</title>
+    <style>
+        body{
+            background-image: url("{% static 'yjimg.jpg ' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .box{
+            width: 300px;
+            padding: 40px;
+            position: absolute;
+            top: 5%;
+            background: black;
+            text-align: center;
+        }
+        .box h1,h2,h3{
+            color: white;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .box input[type = "text"],.box input[type = "password"]{
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 14px 10px;
+            width: 200px;
+            outline:none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            
+            }
+            .box input[type = "text"]:focus,.box input[type = "password"]:focus{
+                width:300px;
+                border-radius: #2ecc71;
+
+            }
+            .box input[type= "submit"]{
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            padding: 14px 40px;
+            width: 200px;
+            outline:none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+            }
+            .box input[type="submit"]:hover{
+                background:#2ecc71 ;
+
+            }
+
+    </style>
+</head>
+<body>
+    {% for message in messages %}
+    <h3>{{ message }}</h3>
+        {% endfor %}
+    <form class ="box" method="POST" action="register">{% csrf_token %}
+    <h1>Registration Page</h1><br>
+    <h2>Enter the username</h2>
+    <input type="text" name ="username" placeholder="enter your username " required>
+    <h2>Enter the emailid</h2>
+    <input type="text" name ="email" placeholder="enter your emailid " required>
+    <h2>Enter the password </h2>
+    <input type ="password" name="password"placeholder="password" required>
+    <h2>Confirm the password </h2>
+    <input type ="password" name="password2"placeholder="password" required>
+        <input type="submit"name="submit" value="Submit" >
+    
+    </form>
+</body>
+</html>
