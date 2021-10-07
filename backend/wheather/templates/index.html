@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Weather Detector</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
+</head>
+<body>
+	<div>
+		<h1 class="header">Weather Detector.</h1>
+	</div>
+	<br>
+	<br>
+	<div>
+		<form action="" method="POST">
+				{% csrf_token %}
+
+			<input class="center" type="text" name="search" placeholder="search" />
+					<br>
+			<br>
+
+			<input class="button"type="submit" name="submit" />
+			  <div class="row">
+    {% if data.country_code %}
+    <center>
+    <div>
+      <h1>{{city}}</h1>
+      <h3>country code : {{data.country_code}}</h3>
+      <br>
+        <h3>coordinate : {{data.coordinate}}</h3><br>
+        <h3>temp : {{data.temp}}</h3><br>
+        <h3>pressure : {{data.pressure}} </h3><br>
+        <h3>humidity : {{data.humidity}}</h3><br>
+        <h3>wind speed : {{data.wind}}</h3><br>
+        <h3>Sunrise time : {{data.sunrise}}</h3><br>
+        <h3>Sunset time : {{data.sunset}}</h3><br>
+        <h3>timezone: {{data.timezone}}</h3><br>
+
+
+
+    </div>
+</center>
+    {% endif %}
+		</form>
+    
+	</div>
+</body>
+</html>
